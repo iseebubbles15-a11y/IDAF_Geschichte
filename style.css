@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Quicksand', sans-serif; /*vo gemini als vorschlag*/
+    font-family: 'Quicksand', sans-serif; /vo gemini als vorschlag/
     background-color: #f4ecf7;
     color: #4a3b32;
     display: flex;
@@ -29,6 +29,7 @@ body {
     box-shadow: 0 10px 25px rgba(74, 59, 50, 0.1);
     position: relative;
 }
+
 
 
 .header {
