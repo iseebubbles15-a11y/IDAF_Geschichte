@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Quicksand', sans-serif; /vo gemini als vorschlag/
+    font-family: 'Quicksand', sans-serif; /*vo gemini als vorschlag*/
     background-color: #f4ecf7;
     color: #4a3b32;
     display: flex;
@@ -118,4 +118,15 @@ td {
     border: 1px solid black;
     padding: 8px;
     text-align: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 15px 0;
 }
