@@ -61,17 +61,43 @@ body {
 }
 
 .textbox-inhalt h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 15px;
     color: #5c4033;
 }
 
-.content-inner p {
+p.content-inner {
     font-size: 1.1rem;
     color: #7d6b63;
-    max-width: 500px;
+    max-width: 750px;
+    margin: 0 auto;
 }
 
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #4a3b32;
+    background-color: #f5ebe0;
+    padding: 12px 28px;
+    border: 2px solid #4a3b32;
+    border-radius: 30px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #4a3b32;
+    color: #faf5ee;
+}
+
+.btn:focus-visible {
+    outline: 3px solid #7d6b63;
+    outline-offset: 3px;
+}
 
 .site-footer {
     padding: 15px;
