@@ -6,18 +6,18 @@
 }
 
 body {
-    font-family: 'Quicksand', sans-serif; /*vo gemini als vorschlag*/
+    font-family: 'Quicksand', sans-serif; /vo gemini als vorschlag/
     background-color: #f4ecf7;
     color: #4a3b32;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
 }
 
 .container {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
 
     background-color: #faf5ee;
     border: 2px solid #4a3b32;
@@ -28,8 +28,8 @@ body {
     justify-content: space-between;
     box-shadow: 0 10px 25px rgba(74, 59, 50, 0.1);
     position: relative;
-    overflow: hidden;
 }
+
 
 
 .header {
