@@ -1,0 +1,86 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif; /*vo gemini als vorschlag*/
+    background-color: #f4ecf7;
+    color: #4a3b32;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    height: 85vh;
+    max-height: 700px;
+
+    background-color: #faf5ee;
+    border: 2px solid #4a3b32;
+
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(74, 59, 50, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+
+.header {
+    padding: 20px;
+    text-align: center;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #4a3b32;
+    letter-spacing: 1px;
+}
+
+
+.textbox {
+    margin: 0 30px;
+    padding: 40px;
+    background-color: #ffffff;
+  
+    border-radius: 35px;
+    border: 2px solid #4a3b32;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.textbox-inhalt h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #5c4033;
+}
+
+.content-inner p {
+    font-size: 1.1rem;
+    color: #7d6b63;
+    max-width: 500px;
+}
+
+
+.site-footer {
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #7d6b63;
+    margin-top: 10px;
+    border-top: 2px solid #4a3b32;
+    background-color: #f5ebe0;
+}
