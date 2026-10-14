@@ -7,4 +7,3 @@ to do
 - [ ] abstände und zeilenumbrüche innerhalb der texte + einheitliche darstellung
 - [ ] bilder anpassen (form und platzierung)
 - [ ] farbliche anpassung des hintergrundes
-- [ ]       
