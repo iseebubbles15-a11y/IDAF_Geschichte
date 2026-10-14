@@ -16,15 +16,13 @@ body {
 }
 
 .container {
-    width: 90%;
-    max-width: 1000px;
-    height: 85vh;
-    max-height: 700px;
+    width: 100vw;
+    height: 100vh;
 
     background-color: #faf5ee;
     border: 2px solid #4a3b32;
 
-    border-radius: 12px;
+    border-radius: 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
