@@ -57,7 +57,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: left;
 }
 
 .textbox-inhalt h2 {
@@ -71,6 +71,8 @@ p.content-inner {
     color: #7d6b63;
     max-width: 750px;
     margin: 0 auto;
+    margin: 0 auto; 
+    text-align: left;
 }
 
 .btn {
