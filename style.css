@@ -130,3 +130,14 @@ img {
     overflow-x: auto;
     margin: 15px 0;
 }
+
+a {
+  color: #4A3B32; 
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #8B5A2B;
+  text-decoration: underline;
+}
