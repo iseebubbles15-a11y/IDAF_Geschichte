@@ -2,6 +2,7 @@
 
 to do 
 - [ ] quellenverzeihnis
+- [ ] fazit
 - [ ] interaktives element
 - [ ] bilder bei caesar
 - [ ] abstände und zeilenumbrüche innerhalb der texte + einheitliche darstellung
