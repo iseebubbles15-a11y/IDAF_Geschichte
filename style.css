@@ -143,3 +143,21 @@ a:hover {
   color: #8B5A2B;
   text-decoration: underline;
 }
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.footer-link {
+    font-weight: 600;
+    color: #8B5A2B;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.footer-link:hover {
+    color: #4a3b32;
+}
