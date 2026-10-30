@@ -247,3 +247,259 @@ a:hover {
 .cipher-tool [hidden] {
     display: none;
 }
+
+
+/* Enigma (enigma.html), jede Farbe gehört zu einem Teil der Maschine */
+.enigma-tool {
+    --enigma-ukw: #5c6b7a;
+    --enigma-l: #c2185b;
+    --enigma-m: #8e44ad;
+    --enigma-r: #2f8f5b;
+    --enigma-plug: #8B5A2B;
+    --enigma-forward: #e67e22;
+    --enigma-back: #1e88e5;
+}
+
+.part-ukw { --part: var(--enigma-ukw); }
+.part-l { --part: var(--enigma-l); }
+.part-m { --part: var(--enigma-m); }
+.part-r { --part: var(--enigma-r); }
+.part-plug { --part: var(--enigma-plug); }
+
+.enigma-tool h4 {
+    margin: 18px 0 8px;
+    color: #5c4033;
+}
+
+.enigma-rotors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.enigma-part {
+    padding: 10px;
+    border: 2px solid var(--part);
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+
+.enigma-tool .enigma-part h4 {
+    margin: 0 0 6px;
+    color: var(--part);
+}
+
+.part-plug {
+    margin-top: 10px;
+}
+
+.enigma-tool .enigma-part label,
+.enigma-field-label {
+    display: block;
+    margin: 6px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.enigma-tool select {
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 2px 4px;
+    border: 2px solid #4a3b32;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #4a3b32;
+}
+
+.enigma-position {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.enigma-small-btn {
+    width: 1.8em;
+    height: 1.8em;
+    font-family: inherit;
+    font-weight: 700;
+    color: #4a3b32;
+    background-color: #f5ebe0;
+    border: 2px solid #4a3b32;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.enigma-small-btn:hover {
+    background-color: #4a3b32;
+    color: #faf5ee;
+}
+
+.enigma-hint {
+    margin: 6px 0;
+    font-size: 0.85rem;
+}
+
+.enigma-current {
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.current-letter {
+    display: inline-block;
+    min-width: 1.8em;
+    margin-left: 4px;
+    padding: 2px 6px;
+    text-align: center;
+    font-weight: 700;
+    color: #4a3b32;
+    border: 2px solid var(--part);
+    border-radius: 6px;
+}
+
+/* Walze hat sich beim letzten Buchstaben gedreht */
+.current-letter.stepped {
+    background-color: var(--part);
+    color: #ffffff;
+    animation: enigma-step 0.5s ease-out;
+}
+
+@keyframes enigma-step {
+    from { transform: translateY(-40%); }
+    to { transform: translateY(0); }
+}
+
+.enigma-plugboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.enigma-plug {
+    width: 2.2em;
+    height: 2.2em;
+    font-family: inherit;
+    font-weight: 700;
+    color: #4a3b32;
+    background-color: #ffffff;
+    border: 2px solid #4a3b32;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.enigma-plug.selected {
+    outline: 3px solid var(--enigma-plug);
+    outline-offset: 2px;
+}
+
+.enigma-swap {
+    margin-top: 10px;
+}
+
+.enigma-lamps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.enigma-lamp-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+}
+
+.enigma-lamp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    font-weight: 700;
+    color: #7d6b63;
+    background-color: #e8e0d8;
+    border: 2px solid #4a3b32;
+    border-radius: 50%;
+}
+
+.enigma-lamp.lit {
+    color: #4a3b32;
+    background-color: #ffd54f;
+    box-shadow: 0 0 12px #ffca28;
+}
+
+.enigma-diagram-wrap {
+    overflow-x: auto;
+}
+
+.enigma-diagram {
+    display: block;
+    width: 100%;
+    min-width: 560px;
+    height: auto;
+}
+
+.enigma-diagram text {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    fill: #4a3b32;
+}
+
+.enigma-diagram .header {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.enigma-diagram .stepped {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.enigma-diagram .box {
+    fill: #ffffff;
+    stroke-width: 2;
+}
+
+.enigma-diagram .window {
+    fill: #f5ebe0;
+}
+
+.enigma-diagram .wire {
+    fill: none;
+    stroke: #ddd3cb;
+    stroke-width: 1;
+}
+
+.enigma-diagram .signal {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.enigma-diagram .signal.forward,
+.legend-forward {
+    stroke: var(--enigma-forward);
+    color: var(--enigma-forward);
+    font-weight: 700;
+}
+
+.enigma-diagram .signal.back,
+.legend-back {
+    stroke: var(--enigma-back);
+    color: var(--enigma-back);
+    font-weight: 700;
+}
+
+.enigma-diagram .key-forward {
+    fill: var(--enigma-forward);
+}
+
+.enigma-diagram .key-back {
+    fill: var(--enigma-back);
+}
+
+.enigma-diagram .key-letter {
+    fill: #ffffff;
+    font-weight: 700;
+}

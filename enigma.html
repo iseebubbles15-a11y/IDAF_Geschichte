@@ -35,6 +35,96 @@
                 <br>
                 <sub>Vereinfachte Darstellung der internen Funktionsweise der Enigma-Maschine</sub>
 
+                <!-- interaktive Enigma, Logik in enigma.js -->
+                <section class="cipher-tool enigma-tool">
+                    <div class="cipher-tool-header">
+                        <h3>Enigma I</h3>
+                        <button type="button" class="btn cipher-mode-btn" id="enigma-reset">Zurücksetzen</button>
+                    </div>
+
+                    <h4>Walzen</h4>
+                    <div class="enigma-rotors">
+                        <div class="enigma-part part-ukw">
+                            <h4>Umkehrwalze</h4>
+                            <label>Typ <select id="enigma-reflector"></select></label>
+                            <p class="enigma-hint">Schickt das Signal durch die Walzen zurück.</p>
+                        </div>
+
+                        <div class="enigma-part part-l enigma-rotor" data-index="0">
+                            <h4>Walze links</h4>
+                            <label>Walze <select class="rotor-select"></select></label>
+                            <label>Ring <select class="ring-select"></select></label>
+                            <span class="enigma-field-label">Grundstellung</span>
+                            <div class="enigma-position">
+                                <button type="button" class="enigma-small-btn position-down" aria-label="Zurückdrehen">&minus;</button>
+                                <select class="position-select" aria-label="Grundstellung links"></select>
+                                <button type="button" class="enigma-small-btn position-up" aria-label="Weiterdrehen">+</button>
+                            </div>
+                            <p class="enigma-hint">Übertrag: <span class="notch-text"></span></p>
+                            <p class="enigma-current">Aktuell <span class="current-letter">A</span></p>
+                        </div>
+
+                        <div class="enigma-part part-m enigma-rotor" data-index="1">
+                            <h4>Walze mitte</h4>
+                            <label>Walze <select class="rotor-select"></select></label>
+                            <label>Ring <select class="ring-select"></select></label>
+                            <span class="enigma-field-label">Grundstellung</span>
+                            <div class="enigma-position">
+                                <button type="button" class="enigma-small-btn position-down" aria-label="Zurückdrehen">&minus;</button>
+                                <select class="position-select" aria-label="Grundstellung mitte"></select>
+                                <button type="button" class="enigma-small-btn position-up" aria-label="Weiterdrehen">+</button>
+                            </div>
+                            <p class="enigma-hint">Übertrag: <span class="notch-text"></span></p>
+                            <p class="enigma-current">Aktuell <span class="current-letter">A</span></p>
+                        </div>
+
+                        <div class="enigma-part part-r enigma-rotor" data-index="2">
+                            <h4>Walze rechts</h4>
+                            <label>Walze <select class="rotor-select"></select></label>
+                            <label>Ring <select class="ring-select"></select></label>
+                            <span class="enigma-field-label">Grundstellung</span>
+                            <div class="enigma-position">
+                                <button type="button" class="enigma-small-btn position-down" aria-label="Zurückdrehen">&minus;</button>
+                                <select class="position-select" aria-label="Grundstellung rechts"></select>
+                                <button type="button" class="enigma-small-btn position-up" aria-label="Weiterdrehen">+</button>
+                            </div>
+                            <p class="enigma-hint">Übertrag: <span class="notch-text"></span></p>
+                            <p class="enigma-current">Aktuell <span class="current-letter">A</span></p>
+                        </div>
+                    </div>
+
+                    <div class="enigma-part part-plug">
+                        <h4>Steckerbrett</h4>
+                        <p class="enigma-hint">Zwei Buchstaben anklicken, um sie mit einem Kabel zu vertauschen. Einen gesteckten Buchstaben anklicken, um das Kabel zu entfernen.</p>
+                        <div class="enigma-plugboard" id="enigma-plugboard"></div>
+                        <p class="enigma-hint" id="enigma-plug-count"></p>
+                    </div>
+
+                    <label for="enigma-input">Eingabe</label>
+                    <textarea id="enigma-input" rows="3" placeholder="Text eingeben...">Wetterbericht</textarea>
+
+                    <label for="enigma-output">Ausgabe</label>
+                    <output id="enigma-output" for="enigma-input"></output>
+                    <button type="button" class="btn cipher-mode-btn enigma-swap" id="enigma-swap">&#8645; Ausgabe als Eingabe</button>
+                    <p class="enigma-hint">
+                        Die Enigma ist umkehrbar: Wird der Geheimtext mit derselben Grundstellung eingegeben, erscheint wieder der Klartext.
+                        Ein Buchstabe wird dabei nie zu sich selbst verschlüsselt.
+                    </p>
+
+                    <h4>Lampenfeld</h4>
+                    <div class="enigma-lamps" id="enigma-lamps"></div>
+
+                    <h4>Signalweg des letzten Buchstabens</h4>
+                    <div class="enigma-diagram-wrap">
+                        <svg id="enigma-diagram" class="enigma-diagram" viewBox="0 0 600 502" role="img" aria-label="Signalweg durch Steckerbrett, Walzen und Umkehrwalze"></svg>
+                    </div>
+                    <p class="enigma-hint">
+                        <span class="legend-forward">&#9473; Hinweg</span> &middot;
+                        <span class="legend-back">&#9473; Rückweg</span> &middot;
+                        oberste Zeile einer Walze = Buchstabe im Sichtfenster
+                    </p>
+                </section>
+
                 <br>
                 <div class="btn-group">
                     <a href="zimmermann.html" class="btn">
@@ -61,5 +151,6 @@
 
     </div>
 
+    <script src="enigma.js"></script>
 </body>
 </html>
