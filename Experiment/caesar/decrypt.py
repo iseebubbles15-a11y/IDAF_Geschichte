@@ -11,24 +11,30 @@ ciphertext = "Khoor wkhuh"
 
 
 def shift_character(character: str, shift: int):
-        # if the character is not a letter but a space or a number, return it directly
+        # if the character is not a letter but a space or
+        #  a number, return it directly
         if not character.upper() in LETTERS:
             return character
         
-        # get the index and turn the letter into uppercase since operations are case-sensitive and LETTERS only
-        # contains uppercase letters
+        # get the index and turn the letter into uppercase since
+        #  operations are case-sensitive and LETTERS only contains
+        #  uppercase letters
         letter_index = LETTERS.index(character.upper()) 
 
-        # calculate new index, shifting backwards now since we're decrypting
+        # calculate new index, shifting backwards now since we're
+        #  decrypting
         letter_index_shifted = letter_index - shift
 
         # now it might be out of range so we need to wrap around 
-        # [A, B, ..., Y, Z] -> Index 20 = U -> Index of 20 + Shift of 10 = 30, but list indexes only go up to
-        # 25 (first element has an index of 0). To do this we use the modulo operator which is essentially 
+        # [A, B, ..., Y, Z] -> Index 20 = U 
+        # -> Index of 20 + Shift of 10 = 30, but list indexes 
+        # only go up to 25 (first element has an index of 0). To 
+        # do this we use the modulo operator which is essentially 
         # "divide by and return the remainder"
-        letter_index_shifted = letter_index_shifted % len(LETTERS) # mod by the amount of numbers in LETTERS
+        letter_index_shifted = letter_index_shifted % len(LETTERS)
 
-        # now we need to get the letter from the shifted index and add it to the ciphertext string
+        # now we need to get the letter from the shifted index and
+        #  add it to the ciphertext string
         ciphertext_letter = LETTERS[letter_index_shifted]
 
         # differentiate between upper- and lowercase letters, 
@@ -63,14 +69,16 @@ def decrypt(ciphertext: str, shift: int = None):
         # only 25 possible keys it's not really worth it and
         # faster to just try them all.
 
-        # time measurements are to display how quickly the key can be guessed
+        # time measurements are to display how quickly the key can 
+        # be guessed
         start_time = perf_counter()
         possible_plaintexts = bruteforce(ciphertext)
         finish_time = perf_counter()
 
         # print all possible solutions with their respective keys
         for possible_plaintext_index in range(len(possible_plaintexts)):
-            print(f"Key {possible_plaintext_index + 1}:\t{possible_plaintexts[possible_plaintext_index]}")
+            print(f"Key {possible_plaintext_index + 1}:\t"
+                  f"{possible_plaintexts[possible_plaintext_index]}")
             # -> "Key x:    Text"
         
         time_taken = finish_time - start_time
@@ -88,3 +96,34 @@ def decrypt(ciphertext: str, shift: int = None):
 
 
 decrypt(ciphertext)
+
+"""
+Output for ciphertext = "Khoor wkhuh" and no key
+Key 1:  Jgnnq vjgtg
+Key 2:  Ifmmp uifsf
+Key 3:  Hello there
+Key 4:  Gdkkn sgdqd
+Key 5:  Fcjjm rfcpc
+Key 6:  Ebiil qebob
+Key 7:  Dahhk pdana
+Key 8:  Czggj oczmz
+Key 9:  Byffi nbyly
+Key 10: Axeeh maxkx
+Key 11: Zwddg lzwjw
+Key 12: Yvccf kyviv
+Key 13: Xubbe jxuhu
+Key 14: Wtaad iwtgt
+Key 15: Vszzc hvsfs
+Key 16: Uryyb gurer
+Key 17: Tqxxa ftqdq
+Key 18: Spwwz espcp
+Key 19: Rovvy drobo
+Key 20: Qnuux cqnan
+Key 21: Pmttw bpmzm
+Key 22: Olssv aolyl
+Key 23: Nkrru znkxk
+Key 24: Mjqqt ymjwj
+Key 25: Lipps xlivi
+
+All keys bruteforced in 94.300 µs
+"""
