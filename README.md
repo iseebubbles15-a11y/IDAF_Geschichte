@@ -3,10 +3,13 @@
 to do 
 - [x] quellenverzeihnis
 - [x] fazit
-- [ ] interaktives element
-- [ ] bilder bei caesar
+- [x] interaktives element
+- [x] bilder bei caesar
 - [ ] abstände und zeilenumbrüche innerhalb der texte + einheitliche darstellung
-- [ ] bilder anpassen (form und platzierung)
+- [x] bilder anpassen (form und platzierung)
       -> i glaub das dass nd wichtig isch
 - [ ] farbliche anpassung des hintergrundes
 - [ ] tabellene responsiv
+
+
+- [ ] Eigma tabelle korekter text.
