@@ -66,6 +66,13 @@ body {
     color: #5c4033;
 }
 
+/* Titel bündig mit dem Text darunter, auch wenn Bilder/Tabellen die Box breiter machen */
+.textbox-inhalt h2:has(+ p.content-inner) {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 p.content-inner {
     font-size: 1.1rem;
     color: #7d6b63;
@@ -94,6 +101,21 @@ p.content-inner {
 .btn:hover {
     background-color: #4a3b32;
     color: #faf5ee;
+}
+
+/* weniger wichtige Links, z.B. Definition Codebücher */
+.btn-secondary {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #7d6b63;
+    background-color: transparent;
+    border-width: 1px;
+}
+
+.btn-secondary:hover {
+    background-color: #f5ebe0;
+    color: #4a3b32;
 }
 
 .btn:focus-visible {
@@ -131,6 +153,15 @@ img {
     max-width: 100%;
     overflow-x: auto;
     margin: 15px 0;
+}
+
+.comparison-table {
+    margin: 30px 40px;
+}
+
+.textbox-inhalt h2:has(+ .comparison-table) {
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 a {
