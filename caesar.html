@@ -102,6 +102,32 @@
                     -> Nur 25 mögliche Schlüssel
 
                 </p>
+
+                <!-- interaktive Caesar-Chiffre, Logik in caesar.js -->
+                <section class="cipher-tool">
+                    <div class="cipher-tool-header">
+                        <h3 id="cipher-mode-title">Verschlüsseln</h3>
+                        <button type="button" class="btn cipher-mode-btn" id="cipher-mode-btn">Zum Entschlüsseln</button>
+                    </div>
+
+                    <label for="cipher-input" id="cipher-input-label">Klartext</label>
+                    <textarea id="cipher-input" rows="3" placeholder="Text eingeben...">Go home Frank</textarea>
+
+                    <label id="cipher-bruteforce-row" hidden>
+                        <input type="checkbox" id="cipher-bruteforce">
+                        Schlüssel unbekannt (Brute-Force)
+                    </label>
+
+                    <div id="cipher-shift-row">
+                        <label for="cipher-shift">Verschiebung: <span id="cipher-shift-value">13</span></label>
+                        <input type="range" id="cipher-shift" min="1" max="25" value="13">
+                    </div>
+
+                    <label for="cipher-output" id="cipher-output-label">Geheimtext</label>
+                    <output id="cipher-output" for="cipher-input cipher-shift"></output>
+                    <ol id="cipher-bruteforce-list" hidden></ol>
+                </section>
+
                 <div class="btn-group">
                     <a href="index.html" class="btn">
                         &larr; Start
@@ -129,5 +155,6 @@
 
     </div>
 
+    <script src="caesar.js"></script>
 </body>
 </html>

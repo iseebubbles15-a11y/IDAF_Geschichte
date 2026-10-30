@@ -161,3 +161,89 @@ a:hover {
 .footer-link:hover {
     color: #4a3b32;
 }
+
+
+/* interaktive Chiffre (caesar.html) */
+.cipher-tool {
+    width: 100%;
+    max-width: 750px;
+    margin: 30px auto 10px;
+    padding: 20px;
+    border: 2px solid #4a3b32;
+    border-radius: 20px;
+    background-color: #faf5ee;
+    color: #7d6b63;
+}
+
+.cipher-tool-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.cipher-tool h3 {
+    color: #5c4033;
+}
+
+.cipher-mode-btn {
+    margin-top: 0;
+    padding: 8px 18px;
+    font-size: 0.9rem;
+}
+
+.cipher-tool label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 600;
+}
+
+.cipher-tool textarea,
+.cipher-tool output {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 2px solid #4a3b32;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #4a3b32;
+}
+
+.cipher-tool textarea {
+    resize: vertical;
+}
+
+.cipher-tool output {
+    min-height: 2.8em;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.cipher-tool input[type="range"] {
+    width: 100%;
+    accent-color: #8B5A2B;
+}
+
+.cipher-tool ol {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 2px solid #4a3b32;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #4a3b32;
+}
+
+.cipher-tool li {
+    padding: 3px 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.cipher-tool [hidden] {
+    display: none;
+}
