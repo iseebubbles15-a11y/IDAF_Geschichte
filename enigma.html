@@ -21,6 +21,7 @@
                 
                 <h2>Enigma</h2>
 
+                <div class="text-figure">
                 <p class="content-inner">
                     Die Enigma Maschine wurde im 2. Weltkrieg von dem deutschen Militär genutzt, um Ihre strategischen Funksprüche zu verschlüsseln. Diese wurde durch die häufige Wiederholung des Grusses «Heil Hitler» zu Begin der Botschaft geknackt. 
                     <br>
@@ -30,10 +31,15 @@
                     <br>
                     Dennoch brauchte die Entschlüsselung einige Zeit, mehrere Maschinen wurden hierzu gebaut, die pro Sekunde tausende Kombinationen elektronisch prüften.
                 </p>
-                <br>
-                <img src="img/enigma-rotors.png" alt="Funktionsweise der Enigma-Walzen" style="height: 300px;">
-                <br>
-                <sub>Vereinfachte Darstellung der internen Funktionsweise der Enigma-Maschine</sub>
+                <figure class="figure figure-historic">
+                    <img src="img/enigma-patent.png" alt="Technische Patentzeichnung der Enigma: in der Mitte die Reihe der Walzen, darunter die Tastatur, rechts das Lampenfeld, oben links Detailskizzen einer einzelnen Walze">
+                    <figcaption>Patentzeichnung der Enigma von Arthur Scherbius (US-Patent 1'657'411, 1928)</figcaption>
+                </figure>
+                </div>
+                <figure class="figure">
+                    <img src="img/enigma-rotors.png" alt="Schema mit drei Walzen und einer Umkehrwalze: Der Buchstabe A läuft auf einem Weg durch alle drei Walzen, wird an der Umkehrwalze zurückgeschickt und kommt auf einem anderen Weg als G wieder heraus" style="max-height: 300px;">
+                    <figcaption>Vereinfachte Darstellung der internen Funktionsweise der Enigma-Maschine</figcaption>
+                </figure>
 
                 <!-- interaktive Enigma, Logik in enigma.js -->
                 <section class="cipher-tool enigma-tool">
@@ -152,5 +158,6 @@
     </div>
 
     <script src="enigma.js"></script>
+    <script src="lightbox.js"></script>
 </body>
 </html>
