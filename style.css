@@ -19,7 +19,7 @@ body {
     width: 100%;
     min-height: 100vh;
 
-    background-color: #faf5ee;
+    background-color: #E7C29B;
     border: 2px solid #4a3b32;
 
     border-radius: 0px;
@@ -48,7 +48,7 @@ body {
 .textbox {
     margin: 10px 30px;
     padding: 40px;
-    background-color: #ffffff;
+    background-color: #EED8C3;
   
     border-radius: 35px;
     border: 2px solid #4a3b32;
@@ -90,7 +90,7 @@ p.content-inner {
     font-weight: 600;
     letter-spacing: 0.5px;
     color: #4a3b32;
-    background-color: #f5ebe0;
+    background-color: #BAB88B;
     padding: 12px 28px;
     border: 2px solid #4a3b32;
     border-radius: 30px;
@@ -130,7 +130,7 @@ p.content-inner {
     color: #7d6b63;
     margin-top: 10px;
     border-top: 2px solid #4a3b32;
-    background-color: #f5ebe0;
+    background-color: #BAB88B;
 }
 
 
