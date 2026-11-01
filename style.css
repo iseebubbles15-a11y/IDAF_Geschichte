@@ -772,3 +772,25 @@ body.lightbox-open {
     width: 750px;
     max-width: 100%;
 }
+
+
+/* Syntax-Highlighting (highlight.js), Farben passend zur Seite */
+.tok-keyword { color: #a0602a; font-weight: 700; }
+.tok-builtin { color: #c2185b; }
+.tok-function { color: #8e44ad; }
+.tok-string { color: #2f7d4f; }
+.tok-number { color: #1e6fa8; }
+.tok-comment { color: #7d6b63; font-style: italic; }
+
+/* Codeblöcke: leichter Hintergrund, bündig mit dem Text */
+pre {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    overflow-x: auto;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    background-color: #faf5ee;
+    border: 1px solid #e0d4c8;
+    border-radius: 15px;
+}
