@@ -73,6 +73,19 @@ body {
     margin-right: auto;
 }
 
+/* Zwischentitel bündig mit dem zentrierten Text */
+.textbox-inhalt > h3 {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.textbox-inhalt h2:has(+ .text-figure) {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 p.content-inner {
     font-size: 1.1rem;
     color: #7d6b63;
@@ -533,4 +546,229 @@ a:hover {
 .enigma-diagram .key-letter {
     fill: #ffffff;
     font-weight: 700;
+}
+
+
+/* Bilder mit Bildunterschrift */
+.figure {
+    max-width: 750px;
+    margin: 25px auto;
+    text-align: center;
+}
+
+.figure img {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #e0d4c8;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(74, 59, 50, 0.08);
+}
+
+.figure figcaption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #7d6b63;
+}
+
+/* Text in der Mitte (genau wie ohne Bild), Bild im freien Platz rechts daneben.
+   Die beiden äusseren Spalten sind gleich breit, darum bleibt der Text zentriert. */
+.text-figure {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 750px) minmax(0, 1fr);
+    column-gap: 30px;
+    align-items: start;
+    margin: 0 auto;
+}
+
+.text-figure p.content-inner {
+    grid-column: 2;
+    width: 100%;
+    margin: 0;
+}
+
+.text-figure .figure {
+    grid-column: 3;
+    justify-self: start;
+    width: 100%;
+    max-width: 340px;
+    /* Höhe 0: das Bild ragt nach unten über, schiebt den folgenden Text aber nicht nach unten */
+    height: 0;
+    margin: 0;
+}
+
+/* zu wenig Platz rechts: Bild unter den Text */
+@media (max-width: 1350px) {
+    .text-figure {
+        display: block;
+    }
+
+    .text-figure p.content-inner {
+        margin: 0 auto;
+    }
+
+    .text-figure .figure {
+        height: auto;
+        margin: 25px auto;
+    }
+}
+
+
+/* alte Scans leicht warm einfärben, passend zum Beige */
+.figure-historic img {
+    filter: sepia(15%);
+}
+
+/* Lightbox (lightbox.js) */
+.figure img {
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.figure img:hover,
+.figure img:focus-visible {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(74, 59, 50, 0.15);
+}
+
+.figure img:focus-visible {
+    outline: 3px solid #7d6b63;
+    outline-offset: 3px;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: rgba(74, 59, 50, 0.85);
+    cursor: zoom-out;
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lightbox figure {
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: calc(100vh - 120px);
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.lightbox figcaption {
+    margin-top: 12px;
+    font-style: italic;
+    color: #faf5ee;
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+/* Häufigkeitsdiagramm (frequency-chart.js) */
+.chart-wrap {
+    position: relative;
+    padding: 15px 10px 5px;
+    background-color: #ffffff;
+    border: 1px solid #e0d4c8;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(74, 59, 50, 0.08);
+}
+
+.frequency-chart {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: inherit;
+}
+
+.chart-grid {
+    stroke: #f0e8df;
+    stroke-width: 1;
+}
+
+.chart-baseline {
+    stroke: #7d6b63;
+    stroke-width: 1;
+}
+
+.chart-axis {
+    font-size: 11px;
+    fill: #7d6b63;
+}
+
+.chart-letter {
+    font-size: 13px;
+    font-weight: 600;
+    fill: #4a3b32;
+}
+
+.chart-value {
+    font-size: 12px;
+    font-weight: 700;
+    fill: #4a3b32;
+}
+
+.chart-bar-fill {
+    fill: #a0602a;
+    transition: fill 0.15s ease;
+}
+
+.chart-bar.active .chart-bar-fill {
+    fill: #4a3b32;
+}
+
+.chart-hit {
+    fill: transparent;
+    cursor: default;
+}
+
+.chart-tooltip {
+    position: absolute;
+    transform: translate(-50%, calc(-100% - 12px));
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    color: #4a3b32;
+    background-color: #ffffff;
+    border: 1px solid #4a3b32;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(74, 59, 50, 0.15);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.chart-tooltip[hidden] {
+    display: none;
+}
+
+.chart-table {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #7d6b63;
+}
+
+.chart-table summary {
+    cursor: pointer;
+}
+
+.chart-table table {
+    margin: 10px auto 0;
+}
+
+.chart-figure {
+    width: 750px;
+    max-width: 100%;
 }
