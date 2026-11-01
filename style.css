@@ -73,6 +73,12 @@ body {
     margin-right: auto;
 }
 
+.textbox-inhalt h2:has(+ .text-figure) {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 p.content-inner {
     font-size: 1.1rem;
     color: #7d6b63;
@@ -533,4 +539,217 @@ a:hover {
 .enigma-diagram .key-letter {
     fill: #ffffff;
     font-weight: 700;
+}
+
+
+/* Bilder mit Bildunterschrift */
+.figure {
+    max-width: 750px;
+    margin: 25px auto;
+    text-align: center;
+}
+
+.figure img {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #e0d4c8;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(74, 59, 50, 0.08);
+}
+
+.figure figcaption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #7d6b63;
+}
+
+/* Text links, Bild rechts (z.B. zimmermann.html) */
+.text-figure {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto 25px;
+}
+
+.text-figure p.content-inner {
+    flex: 1 1 0;
+    margin: 0;
+}
+
+.text-figure .figure {
+    flex: 0 0 340px;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .text-figure {
+        flex-direction: column;
+    }
+
+    .text-figure .figure {
+        flex-basis: auto;
+        margin: 0 auto;
+    }
+}
+
+
+/* alte Scans leicht warm einfärben, passend zum Beige */
+.figure-historic img {
+    filter: sepia(15%);
+}
+
+/* Lightbox (lightbox.js) */
+.figure img {
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.figure img:hover,
+.figure img:focus-visible {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(74, 59, 50, 0.15);
+}
+
+.figure img:focus-visible {
+    outline: 3px solid #7d6b63;
+    outline-offset: 3px;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: rgba(74, 59, 50, 0.85);
+    cursor: zoom-out;
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lightbox figure {
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: calc(100vh - 120px);
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.lightbox figcaption {
+    margin-top: 12px;
+    font-style: italic;
+    color: #faf5ee;
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+/* Häufigkeitsdiagramm (frequency-chart.js) */
+.chart-wrap {
+    position: relative;
+    padding: 15px 10px 5px;
+    background-color: #ffffff;
+    border: 1px solid #e0d4c8;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(74, 59, 50, 0.08);
+}
+
+.frequency-chart {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: inherit;
+}
+
+.chart-grid {
+    stroke: #f0e8df;
+    stroke-width: 1;
+}
+
+.chart-baseline {
+    stroke: #7d6b63;
+    stroke-width: 1;
+}
+
+.chart-axis {
+    font-size: 11px;
+    fill: #7d6b63;
+}
+
+.chart-letter {
+    font-size: 13px;
+    font-weight: 600;
+    fill: #4a3b32;
+}
+
+.chart-value {
+    font-size: 12px;
+    font-weight: 700;
+    fill: #4a3b32;
+}
+
+.chart-bar-fill {
+    fill: #a0602a;
+    transition: fill 0.15s ease;
+}
+
+.chart-bar.active .chart-bar-fill {
+    fill: #4a3b32;
+}
+
+.chart-hit {
+    fill: transparent;
+    cursor: default;
+}
+
+.chart-tooltip {
+    position: absolute;
+    transform: translate(-50%, calc(-100% - 12px));
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    color: #4a3b32;
+    background-color: #ffffff;
+    border: 1px solid #4a3b32;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(74, 59, 50, 0.15);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.chart-tooltip[hidden] {
+    display: none;
+}
+
+.chart-table {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #7d6b63;
+}
+
+.chart-table summary {
+    cursor: pointer;
+}
+
+.chart-table table {
+    margin: 10px auto 0;
+}
+
+.chart-figure {
+    width: 750px;
+    max-width: 100%;
 }

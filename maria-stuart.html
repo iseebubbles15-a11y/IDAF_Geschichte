@@ -21,24 +21,44 @@
                 <h2>Maria-Stuart</h2>
 
                 <p class="content-inner">
-                    Der Babington-Cipher war einer der ersten bekannte Fälle, in denen ein geknackter Code zum Tode eines Menschen geführt hat. In diesem Fall war dies Maria Stuart, die ehemelige Königin von Schottland. Seit 19 Jahren in England gefangen gehalten mit keiner Erlaubnis mit der Aussenwelt zu kommunizieren, tat dies dennoch mithilfe des Babington-Codes, welcher in Bierfässern hinein- und hinausgeschmuggelt wurde. Als politische Gefangene war Maria Stuart bereits unter Verdacht der Verschwörung, aber um eine Todesstrafe zu rechtfertigen wurden beweise benötigt. Diese Beweise kamen in Form des geknackten Babington-Codes. Am 6. Juli 1586 schrieb Anthony Babington Maria Stuart eine verschlüsselte (und im geheimen geknackte) Botschaft zum Plan zum Mord von Queen Elizabeth, welchem Sie am 17. Juli zustimmte. Am 8. Februar 1587 wurde Sie geköpft, nachdem die entschlüsselten Briefe in einem Gerichtsverfahren gegen sie verwendet wurden.
+                    Der Babington-Cipher war einer der ersten bekannten Fälle, in denen ein geknackter Code zum Tode eines Menschen geführt hat. In diesem Fall war dies Maria Stuart, die ehemalige Königin von Schottland. Seit 19 Jahren in England gefangen gehalten und ohne Erlaubnis, mit der Aussenwelt zu kommunizieren, tat sie dies dennoch mithilfe des Babington-Codes, welcher in Bierfässern hinein- und hinausgeschmuggelt wurde. Als politische Gefangene war Maria Stuart bereits unter Verdacht der Verschwörung, aber um eine Todesstrafe zu rechtfertigen, wurden Beweise benötigt. Diese Beweise kamen in Form des geknackten Babington-Codes. Am 6. Juli 1586 schrieb Anthony Babington Maria Stuart eine verschlüsselte (und im Geheimen geknackte) Botschaft zum Plan zum Mord von Queen Elizabeth, welchem sie am 17. Juli zustimmte. Am 8. Februar 1587 wurde sie geköpft, nachdem die entschlüsselten Briefe in einem Gerichtsverfahren gegen sie verwendet wurden. [16], [17]
+                </p>
+                <h3>Verschlüsselung</h3>
+                <div class="text-figure">
+                <p class="content-inner">
+                    Die Zeichen des Alphabetes wurden mit Symbolen ersetzt. Hierbei hatte das Alphabet nur 23 Zeichen (kein J, V oder W). Zudem gab es 36 Codewörter (THE, AND, OF, QUEEN, ELIZABETH, etc.), welche das Brechen der Verschlüsselung komplizierter machten. 4 Symbole waren Fallen, bedeutungslos und nur zur Ablenkung vorhanden. 1 Symbol war ein «Doppler», welches Wiederholungen von Symbolen markierte, aber weniger offensichtlich machte. [16], [18]
                     <br>
-                    Die Verschlüsselung funktionierte wie folgt:
-                    Die Zeichen des Alphabetes wurden mit Symbolen ersetzt. Hierbei hatte das Alphabet nur 23 Zeichen (kein J, V oder W). Zudem gab es 36 Codewörter (THE, AND, OF, QUEEN, ELIZABETH, etc.), welche das Brechen der Verschlüsselung komplizierter machten. 4 Symbole waren Fallen, bedeutungslos und nur zur Ablenkung vorhanden. 1 Symbol war ein «Doppler», welches Wiederholungen von Symbolen markierte, aber weniger offensichtlich machte.
                     In dem folgenden Bild ist eine Übersicht der Symbole festgehalten.
                 </p>
-                <br>
-                <img src="img/babington.png" alt="Symbole des Babington-Codes" style="height: 500px;">
-                <br>
+                <figure class="figure figure-historic">
+                    <img src="img/babington.png" alt="Handschriftliche Tabelle aus dem 16. Jahrhundert: oben die Buchstaben des Alphabets mit dem jeweiligen Geheimzeichen darunter, darunter mehrere Spalten mit Wörtern wie Namen und häufigen Begriffen und ihren eigenen Symbolen" style="max-height: 500px;">
+                    <figcaption>Übersicht der Symbole des Babington-Codes [19]</figcaption>
+                </figure>
+                </div>
+                <h3>Entschlüsselung</h3>
                 <p class="content-inner">
-                    Geknackt wurde die Verschlüsselung durch einen Prozess, welcher als Häufigkeitsanalyse bekannt ist. 
-                    Hierbei kann bei einem genügend grossen Text die Häufigkeit der Symbole analysiert werden, und mit den englischen Buchstaben abgeglichen werden. Danach wird klar, welche Zeichen welchen Buchstaben entsprechen. Der Babington-Code enthielt einige Fallen (die Null-Zeichen, Doppler und Zeichen für ganze Wörter), aber es gelang dennoch ihn zu entschlüsseln.
+                    Geknackt wurde die Verschlüsselung durch einen Prozess, welcher als Häufigkeitsanalyse bekannt ist.
+                    <br>
+                    Hierbei kann bei einem genügend grossen Text die Häufigkeit der Symbole analysiert werden, und mit den englischen Buchstaben abgeglichen werden. Danach wird klar, welche Zeichen welchen Buchstaben entsprechen. Der Babington-Code enthielt einige Fallen (die Null-Zeichen, Doppler und Zeichen für ganze Wörter), aber es gelang dennoch, ihn zu entschlüsseln. [21]
+                    <br>
+                    Diese Häufigkeitsanalyse findet heute oft programmatisch statt, so werden diverse Zeichen digitalisiert und automatisch analysiert. Hier in diesem Fall ist die Frequenzanalyse sinnvoll. Für die Cäsar-Verschlüsselung lohnte sie sich nicht, da die Zeichen nur verschoben wurden, bei der Babington-Verschlüsselung werden die Buchstaben jedoch von anderen Zeichen ersetzt. Auch wenn durch die Frequenzanalyse nicht eine direkte Lösung möglich wird, so bietet sie doch einen guten Einstiegspunkt.
                 </p>
-                <br>
-                <img src="img/distribution.png" alt="Buchstabenhäufigkeit im Englischen" style="height: 300px;">
-                <br>
-                <sub>Verteilung der Buchstaben nach Häufigkeit in der englischen Sprache</sub>
-                <br>
+                <figure class="figure chart-figure">
+                    <div class="chart-wrap">
+                        <svg id="frequency-chart" class="frequency-chart" viewBox="0 0 760 300" role="img" aria-label="Balkendiagramm: Buchstabenhäufigkeit im Englischen, E ist mit 12.02% am häufigsten"></svg>
+                        <div id="frequency-tooltip" class="chart-tooltip" hidden></div>
+                    </div>
+                    <figcaption>Verteilung der Buchstaben nach Häufigkeit in der englischen Sprache [20], [21]</figcaption>
+                    <details class="chart-table">
+                        <summary>Als Tabelle anzeigen</summary>
+                        <div class="table-scroll">
+                            <table id="frequency-table">
+                                <thead><tr><td>Buchstabe</td><td>Häufigkeit</td></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </details>
+                </figure>
                 <div class="btn-group">
                     <a href="caesar.html" class="btn">
                         &larr; Caesar Verschlüsselung
@@ -64,5 +84,7 @@
 
     </div>
 
+    <script src="frequency-chart.js"></script>
+    <script src="lightbox.js"></script>
 </body>
 </html>
