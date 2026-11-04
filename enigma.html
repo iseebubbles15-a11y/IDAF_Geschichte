@@ -19,23 +19,29 @@
         <main class="textbox">
             <div class="textbox-inhalt">
                 
-                <h2>Enigma</h2>
+                <h2>Enigma im Zweiten Weltkrieg untersuchen</h2>
 
                 <div class="text-figure">
                 <p class="content-inner">
                     Die Enigma-Maschine wurde im 2. Weltkrieg von dem deutschen Militär genutzt, um ihre strategischen Funksprüche zu verschlüsseln. Lange Zeit waren diese nicht zu entschlüsseln und die deutsche Kommunikation war sicher.
-                    <br>
+                    <br> <br>
                     Das Grundprinzip der Maschine ist einfach. Ein Text wird über eine Tastatur eingegeben, diese Eingabe wird durch mehrere, sich mit jedem Zeichen drehende Zahnräder in eine Ausgabe umgewandelt. Durch die sich drehenden Räder wurde die Verschlüsselung stets von den vorausgehenden Zeichen beeinflusst und erschwerte so das Herbeiführen eines Schlüssels stark, da ja weder die vorausgehende Eingabe noch der Schlüssel bekannt waren. [14] Als besonders sicher galt diese, da sie über 3·10<sup>114</sup> [14] mögliche Schlüssel verfügte, was Brute-Force, das einfache Ausprobieren aller Schlüssel, praktisch unmöglich machte.
                 </p>
-                <figure class="figure figure-historic">
-                    <img src="img/enigma-patent.png" alt="Technische Patentzeichnung der Enigma: in der Mitte die Reihe der Walzen, darunter die Tastatur, rechts das Lampenfeld, oben links Detailskizzen einer einzelnen Walze">
-                    <figcaption>Patentzeichnung der Enigma von Arthur Scherbius (US-Patent 1'657'411, 1928) [27]</figcaption>
-                </figure>
+                <div class="figure-stack">
+                    <figure class="figure">
+                        <img src="img/enigma.png" alt="Foto einer Enigma-Maschine in einem Holzkasten: oben das Lampenfeld und die Sichtfenster der Walzen, darunter die Tastatur, unten das Steckbrett mit gesteckten Kabeln">
+                        <figcaption>Abbildung 5: Enigma-Chiffriermaschine [26]</figcaption>
+                    </figure>
+                    <figure class="figure figure-historic">
+                        <img src="img/enigma-patent.png" alt="Technische Patentzeichnung der Enigma: in der Mitte die Reihe der Walzen, darunter die Tastatur, rechts das Lampenfeld, oben links Detailskizzen einer einzelnen Walze">
+                        <figcaption>Abbildung 6: Patentzeichnung der Enigma von Arthur Scherbius, US-Patent 1,657,411 [27]</figcaption>
+                    </figure>
+                </div>
                 </div>
                 <br>
                 <h3>Sicherheit</h3>
                 <p class="content-inner">
-                    Die Anzahl Schlüssel kommt von der Anzahl der Konfigurationsmöglichkeiten. 26 Buchstaben auf den Rotoren und 3 Rotoren hintereinander. Die Rotoren hatten 26 mögliche Positionen für 26 Buchstaben. Diese wurden anders wie bei der Cäsar-Verschlüsselung nicht einfach verschoben, sondern durchmischt. Das bedeutet in der ersten Position können 26 Buchstaben platziert werden, danach 25, danach 24 und so weiter. Dies führt zu 26 · 25 · 24 … · 1 möglichen Konfigurationen, was mathematisch auch als 26! notiert wird.
+                    Die Anzahl Schlüssel kommt von der Anzahl der Konfigurationsmöglichkeiten. 26 Buchstaben auf den Rotoren und 3 Rotoren hintereinander. Die Rotoren hatten 26 mögliche Positionen für 26 Buchstaben. Diese wurden anders als bei der Cäsar-Verschlüsselung nicht einfach verschoben, sondern durchmischt. Das bedeutet in der ersten Position können 26 Buchstaben platziert werden, danach 25, danach 24 und so weiter. Dies führt zu 26 · 25 · 24 … · 1 möglichen Konfigurationen, was mathematisch auch als 26! notiert wird.
                     <br>
                     Danach gab es 3 Rotoren, die hintereinander geschaltet wurden. Da wir dieselbe Konfiguration nicht mehrmals verwenden möchten, gibt es in dem zweiten Rotor nur noch 26! – 1 mögliche Rotoren und in dem danach 26! – 2. Dies führt zu 26! · (26! – 1) · (26! – 2) was ungefähr 6.55·10<sup>79</sup> möglichen Kombinationen entspricht.
                     <br>
@@ -47,7 +53,7 @@
                     <br>
                     Im letzten Schritt, dem «plugboard» wurde ein Buchstabe mit einem anderen getauscht. Es konnte also ein Kabel eines Buchstabens mit anderen verwendet werden. Mit 13 Kabeln führte dies wiederum zu 25!! möglichen Kombinationen.
                     <br>
-                    Rechnen wir nun alle Faktoren zusammen, also 26! · (26! – 1) · (26! – 2) · 26<sup>3</sup> · 26<sup>2</sup> · 25!! · 25!! ergibt dies etwa 4.87·10<sup>112</sup> möglichen Konfigurationen. Zieht man die Möglichkeit für unterschiedliche Mengen Kabel im letzten Schritt in Betracht, erhält man die zuvor beschriebenen 3·10<sup>114</sup> Möglichkeiten
+                    Rechnen wir nun alle Faktoren zusammen, also 26! · (26! – 1) · (26! – 2) · 26<sup>3</sup> · 26<sup>2</sup> · 25!! · 25!! ergibt dies etwa 4.87·10<sup>112</sup> möglichen Konfigurationen. Zieht man die Möglichkeit für unterschiedliche Mengen Kabel im letzten Schritt in Betracht, erhält man die zuvor beschriebenen 3·10<sup>114</sup> Möglichkeiten.
                 </p>
                 <br>
                 <h3>Probleme</h3>
@@ -58,7 +64,7 @@
                     <br>
                     Die äusseren Ringe verwendeten oft denselben Wert, was deren Anzahl Konfigurationen zu 1 schrumpfte.
                     <br>
-                    Ebenfalls gab es nur eine Reflektorenplatte, weshalb die Anzahl Konfigurationen wiederum zu 1 machte, sobald die Alliierten an eine deutsche Enigma kamen.
+                    Ebenfalls gab es nur eine Reflektorenplatte, was die Anzahl Konfigurationen dieser wiederum gleich 1 machte, sobald die Alliierten an eine deutsche Enigma kamen.
                     <br>
                     Schlussendlich wurden meistens 10 Kabel für das «plugboard» verwendet, was dort zu 1.5·10<sup>14</sup> möglichen Kombinationen führte.
                     <br>
@@ -70,7 +76,7 @@
                 </p>
                 <figure class="figure">
                     <img src="img/enigma-inner-workings.png" alt="Schema des Signalwegs: Die Taste T wird gedrückt, das Steckbrett tauscht T mit K, das Signal läuft durch die Eintrittswalze und die drei Walzen zur Umkehrwalze, auf einem anderen Weg zurück und über das Steckbrett, das W mit G tauscht, zum Lampenfeld, wo G aufleuchtet" style="max-height: 400px;">
-                    <figcaption>Signalweg durch Steckbrett, Walzen und Umkehrwalze der Enigma (© 2006, Louise Dade, zitiert nach [14])</figcaption>
+                    <figcaption>Abbildung 7: Signalweg durch Steckbrett, Walzen und Umkehrwalze der Enigma (© 2006, Louise Dade, zitiert nach [14])</figcaption>
                 </figure>
 
                 <!-- interaktive Enigma, Logik in enigma.js -->

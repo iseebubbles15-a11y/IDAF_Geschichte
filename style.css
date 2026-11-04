@@ -80,7 +80,8 @@ body {
     margin-right: auto;
 }
 
-.textbox-inhalt h2:has(+ .text-figure) {
+.textbox-inhalt h2:has(+ .text-figure),
+.textbox-inhalt h2:has(+ h3) {
     max-width: 750px;
     margin-left: auto;
     margin-right: auto;
@@ -157,6 +158,15 @@ td {
     text-align: center;
 }
 
+/* Tabellenbeschriftung unter der Tabelle, gleich wie .figure figcaption */
+caption {
+    caption-side: bottom;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #7d6b63;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -168,11 +178,19 @@ img {
     margin: 15px 0;
 }
 
+/* Tabelle unter dem zentrierten Text, auch wenn ein Bild daneben die Box breiter macht */
+.table-scroll table {
+    margin: 0 auto;
+}
+
 .comparison-table {
     margin: 30px 40px;
 }
 
-.textbox-inhalt h2:has(+ .comparison-table) {
+/* Titel und Zwischentitel bündig mit der Vergleichstabelle */
+.textbox-inhalt h2:has(+ h3 + .comparison-table),
+.textbox-inhalt > h3:has(+ .comparison-table) {
+    max-width: none;
     margin-left: 40px;
     margin-right: 40px;
 }
@@ -611,6 +629,28 @@ a:hover {
 
     .text-figure .figure {
         height: auto;
+        margin: 25px auto;
+    }
+}
+
+
+/* mehrere Bilder untereinander im freien Platz rechts neben dem Text */
+.text-figure .figure-stack {
+    grid-column: 3;
+    height: 0;
+}
+
+.text-figure .figure-stack .figure {
+    height: auto;
+    margin: 0 0 20px;
+}
+
+@media (max-width: 1350px) {
+    .text-figure .figure-stack {
+        height: auto;
+    }
+
+    .text-figure .figure-stack .figure {
         margin: 25px auto;
     }
 }

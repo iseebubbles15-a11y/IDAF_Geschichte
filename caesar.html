@@ -18,18 +18,17 @@
         
         <main class="textbox">
             <div class="textbox-inhalt">
-                <h2>Caesar-Chiffre</h2>
+                <h2>Cäsar-Verschlüsselung</h2>
 
                 <p class="content-inner">
-                    Wie der Name schon sagt, wurde die Verschlüsselung von dem römischen Diktator und Feldherrn Julius Caesar verwendet. Dieser hat laut dem Schriftsteller Suetonius sie oft verwendet, meist mit dem Schlüssel 3, ihn aber nicht erfunden. [10]
-                    <br>
+                    Wie der Name schon sagt, wurde die Verschlüsselung von dem römischen Diktator und Feldherrn Julius Caesar verwendet. Dieser hat sie laut dem Schriftsteller Suetonius oft verwendet, meist mit dem Schlüssel 3, ihn aber nicht erfunden. [10]
+                    <br> <br>
                     Das Alphabet, wie wir es kennen, dient als Ausgangspunkt. Anschliessend wird jeder Buchstabe um die gleiche Verschiebung x verschoben, sodass sich eine Umwandlungstabelle ergibt. So wirkt die Nachricht für den Betrachter wie zufällig gewählte Buchstaben, sobald man aber die Verschiebung kennt, ist die Nachricht schnell zu entschlüsseln. [11]
-                    <br>
-                    Eine Beispieltabelle für den Verschiebungswert 13:
                 </p>
 
                 <div class="table-scroll">
                     <table>
+                        <caption>Tabelle 1: Cäsar-Verschiebung um 13</caption>
                         <tr>
                             <td>a</td>
                             <td>b</td>
@@ -89,36 +88,34 @@
                     </table>
                 </div>
 
+                <div class="text-figure">
                 <p class="content-inner">
                     Beispielsatz:
                     <br>
                     «Go home Frank» -&gt; «Tb ubzr Senax»
-                    <br>
+                    <br> <br>
                     -&gt; Nur 25 mögliche Schlüssel
                 </p>
+                <figure class="figure">
+                    <img src="img/caesar-wheel.png" alt="Cäsar-Scheibe aus zwei Ringen: aussen das Alphabet in Grossbuchstaben, innen in Kleinbuchstaben. Durch Drehen der Scheibe lässt sich die Verschiebung ablesen">
+                    <figcaption>Abbildung 1: Cäsar-Dechiffrierrad [12]</figcaption>
+                </figure>
+                </div>
+
+                <br>
 
                 <h3>Kurzes Experiment</h3>
                 <p class="content-inner">
-                    Anstatt eines Experimentes auf Papier, habe ich mich dafür entschieden, den sehr einfachen Algorithmus einfach in Python umzusetzen.
-                    <br>
-                    Der Code hierfür ist dokumentiert und folgt.
+                    Anstatt eines Experimentes auf Papier, haben wir uns dafür entschieden, den sehr einfachen Algorithmus einfach in Python umzusetzen.
+                    <br> <br>
+                    Der Code hierfür ist dokumentiert und im <a href="anhang.html">Anhang</a> abgelegt.
+                    <br> <br>
+                    Nutzen wir nun dieses Programm um den Text «Hello there» mit dem Schlüssel 3 zu verschlüsseln, resultiert dies in «Khoor wkhuh».
+                    <br> <br>
+                    Ausschnitt aus dem Code:
                 </p>
                 <div class="table-scroll">
-<pre><code class="language-python">LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-text = "Hello there"
-
-def encrypt(plaintext: str, shift: int):
-    ciphertext = ""
-    for character in plaintext:
-
-        # if the character is not a letter but a space
-        # or a number, add it to the result directly
-        if not character.upper() in LETTERS:
-            ciphertext += character
-            continue
-
-        # get the index and turn the letter into uppercase
+<pre><code class="language-python">        # get the index and turn the letter into uppercase
         # since operations are case-sensitive and LETTERS only
         # contains uppercase letters
         letter_index = LETTERS.index(character.upper())
@@ -136,122 +133,13 @@ def encrypt(plaintext: str, shift: int):
 
         # now we need to get the letter from the shifted index
         #  and add it to the ciphertext string
-        ciphertext_letter = LETTERS[letter_index_shifted]
-
-        # differentiate between upper- and lowercase letters,
-        if character.isupper():
-            ciphertext += ciphertext_letter
-        else:
-            ciphertext += ciphertext_letter.lower()
-
-    # after we're done, return the ciphertext
-    return ciphertext
-
-ciphertext = encrypt(text, 3)
-print(ciphertext)</code></pre>
+        ciphertext_letter = LETTERS[letter_index_shifted]</code></pre>
                 </div>
                 <p class="content-inner">
-                    Um diesen ciphertext, hier in unserem Fall «Khoor wkhuh», nun zu entschlüsseln, müssen wir entweder den Schlüssel kennen, oder alle möglichen Schlüssel ausprobieren. Um dies zu tun, habe ich ein weiteres Programm geschrieben und dokumentiert.
+                    Um diesen ciphertext, hier in unserem Fall «Khoor wkhuh», nun zu entschlüsseln, müssen wir entweder den Schlüssel kennen, oder alle möglichen Schlüssel ausprobieren. Um dies zu tun, haben wir ein weiteres Programm geschrieben und ebenfalls im <a href="anhang.html">Anhang</a> dokumentiert.
                 </p>
                 <div class="table-scroll">
-<pre><code class="language-python">from time import perf_counter
-
-LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-ciphertext = "Khoor wkhuh"
-
-# for this we can keep the logic largely the same, but I've moved
-# the logic to shift the letter to a separate function to make it
-# more readable
-
-def shift_character(character: str, shift: int):
-        # if the character is not a letter but a space or
-        #  a number, return it directly
-        if not character.upper() in LETTERS:
-            return character
-
-        # get the index and turn the letter into uppercase since
-        #  operations are case-sensitive and LETTERS only contains
-        #  uppercase letters
-        letter_index = LETTERS.index(character.upper())
-
-        # calculate new index, shifting backwards now since we're
-        #  decrypting
-        letter_index_shifted = letter_index - shift
-
-        # now it might be out of range so we need to wrap around
-        # [A, B, ..., Y, Z] -&gt; Index 20 = U
-        # -&gt; Index of 20 + Shift of 10 = 30, but list indexes
-        # only go up to 25 (first element has an index of 0). To
-        # do this we use the modulo operator which is essentially
-        # "divide by and return the remainder"
-        letter_index_shifted = letter_index_shifted % len(LETTERS)
-
-        # now we need to get the letter from the shifted index and
-        #  add it to the ciphertext string
-        ciphertext_letter = LETTERS[letter_index_shifted]
-
-        # differentiate between upper- and lowercase letters,
-        if character.isupper():
-            return ciphertext_letter
-        else:
-            return ciphertext_letter.lower()
-
-def bruteforce(ciphertext: str):
-    possible_plaintexts = []
-
-    # iterate through all sensible keys
-    # (excluding 0 because and 26 because they land back on
-    # the same letter)
-    for shift in range(1, 26):
-        plaintext = ""
-
-        # shift the string by the current guessed key
-        for character in ciphertext:
-            plaintext += shift_character(character, shift)
-
-        # add the guessed plaintext to the list
-        possible_plaintexts.append(plaintext)
-
-    # after we've tried all keys, return the list
-    return possible_plaintexts
-
-def decrypt(ciphertext: str, shift: int = None):
-    if shift == None:
-        # since we don't know the shift we'll just guess
-        # we could do frequency analysis, but since there's
-        # only 25 possible keys it's not really worth it and
-        # faster to just try them all.
-
-        # time measurements are to display how quickly the key can
-        # be guessed
-        start_time = perf_counter()
-        possible_plaintexts = bruteforce(ciphertext)
-        finish_time = perf_counter()
-
-        # print all possible solutions with their respective keys
-        for possible_plaintext_index in range(len(possible_plaintexts)):
-            print(f"Key {possible_plaintext_index + 1}:\t"
-                  f"{possible_plaintexts[possible_plaintext_index]}")
-            # -&gt; "Key x:    Text"
-
-        time_taken = finish_time - start_time
-        print(f"\nAll keys bruteforced in {time_taken*1_000_000:.3f} µs")
-    else:
-        # since we know the key we only need to decrypt it once
-        plaintext = ""
-
-        # shift the string by the given key
-        for character in ciphertext:
-            plaintext += shift_character(character, shift)
-
-        print(f"Key {shift}:\t{plaintext}")
-        # -&gt; "Key x:    Text"
-
-decrypt(ciphertext)
-
-"""
-Output for ciphertext = "Khoor wkhuh" and no key
+<pre><code>Output for ciphertext = "Khoor wkhuh" and no key
 Key 1:  Jgnnq vjgtg
 Key 2:  Ifmmp uifsf
 Key 3:  Hello there
@@ -278,8 +166,7 @@ Key 23: Nkrru znkxk
 Key 24: Mjqqt ymjwj
 Key 25: Lipps xlivi
 
-All keys bruteforced in 94.300 µs
-"""</code></pre>
+All keys bruteforced in 94.300 µs</code></pre>
                 </div>
                 <p class="content-inner">
                     Alle Schlüssel wurden innerhalb von 94 Mikrosekunden gelöst, was zeigt, weshalb diese Verschlüsselung extrem unsicher ist.
@@ -289,20 +176,20 @@ All keys bruteforced in 94.300 µs
 
                 <h3>Gruppe</h3>
                 <p class="content-inner">
-                    Nun habe ich einer Experimentgruppe, hier meinen Eltern, einen verschlüsselten Text gegeben und angewiesen, diesen zu entschlüsseln. Die Experimentgruppe hat keinerlei Erfahrung in Kryptographie. Nachdem ich erklärt habe, wie die Cäsar-Verschlüsselung funktioniert, haben sie sofort den Ansatz erkannt, einfach alle Schlüssel auszuprobieren. Der erste Gedanke war, nach einem Entschlüsselungstool [13] zu suchen, aber nachdem ich sie bat, es für dieses Experiment von Hand zu versuchen, wurde dieser nicht umgesetzt. Eine Drehscheibe haben sie nicht gebastelt, aber das ganze Alphabet aufgeschrieben und die Buchstaben so verschoben. Für die Schlüsselsuche haben sie bei 1 begonnen und sich von dort aus hochgearbeitet. Hierbei haben sie nicht den ganzen Text, sondern nur das erste Wort mit einem Schlüssel entschlüsselt und ihn teilweise sogar bereits nach einigen Buchstaben verworfen. Durch diese Herangehensweise kamen sie rasch zur Lösung, nach etwa 4:30 Minuten hatten sie den verschlüsselten Text “Cvggjjjj!” entschlüsselt. Mit dem Schlüssel 21 ergibt sich die Lösung “Halloooo!”.
+                    Nun haben wir einer Experimentgruppe, hier den Eltern von Vincent, einen verschlüsselten Text gegeben und angewiesen, diesen zu entschlüsseln. Die Experimentgruppe hat keinerlei Erfahrung in Kryptographie. Nachdem Vincent erklärt hat, wie die Cäsar-Verschlüsselung funktioniert, haben sie sofort den Ansatz erkannt, einfach alle Schlüssel auszuprobieren. Der erste Gedanke war, nach einem Entschlüsselungstool [13] zu suchen, aber nachdem wir sie baten, es für dieses Experiment von Hand zu versuchen, wurde dieser nicht umgesetzt. Eine Drehscheibe haben sie nicht gebastelt, aber das ganze Alphabet aufgeschrieben und die Buchstaben so verschoben. Für die Schlüsselsuche haben sie bei 1 begonnen und sich von dort aus hochgearbeitet. Hierbei haben sie nicht den ganzen Text, sondern nur das erste Wort mit einem Schlüssel entschlüsselt und ihn teilweise sogar bereits nach einigen Buchstaben verworfen. Durch diese Herangehensweise kamen sie rasch zur Lösung, nach etwa 4:30 Minuten hatten sie den verschlüsselten Text «Cvggjjjj!» entschlüsselt. Mit dem Schlüssel 21 ergibt sich die Lösung «Halloooo!».
                 </p>
 
                 <br>
 
                 <h3>Analyse</h3>
                 <p class="content-inner">
-                    Die Herangehensweise der Experimentgruppe wies einige unerwartete, aber intuitive Optimierungen vor. Nachdem der Algorithmus erklärt wurde, ging es mit der Entschlüsselung rasch voran. Eine weitere mögliche Optimierung wäre gewesen, die Schlüssel aufzuteilen, jemand sucht von 25 abwärts und jemand von 1 aufwärts, aber diese wurde nicht angewendet.
+                    Die Herangehensweise der Experimentgruppe wies einige unerwartete, aber intuitive Optimierungen auf. Nachdem der Algorithmus erklärt wurde, ging es mit der Entschlüsselung rasch voran. Eine weitere mögliche Optimierung wäre gewesen, die Schlüssel aufzuteilen, jemand sucht von 25 abwärts und jemand von 1 aufwärts, aber diese wurde nicht angewendet.
                     <br> <br>
                     Das Experiment zeigt, dass sobald der Mechanismus der Verschlüsselung klar ist, die Entschlüsselung trivial ist. Dabei gibt es jedoch einige zu beachtende Faktoren: Berechnungsaufwand, Werkzeuge und (mögliche) Schlüssel.
                     <br> <br>
                     Der Berechnungsaufwand ist wichtig, da falls die Berechnung mehr Zeit in Anspruch genommen hätte, die Entschlüsselung länger gedauert hätte. Ob diese nun 5 oder 10 Minuten dauert, spielt hier keine grosse Rolle, aber bei moderner Kryptographie, bei welcher die Entschlüsselung mehrere tausend oder sogar Millionen Jahre dauern könnte, wird die Information irrelevant werden, bevor sie entschlüsselt wird.
                     <br> <br>
-                    Die zur Verfügung stehenden Werkzeuge sind relevant, da diese die Arbeit massiv beschleunigen können. Hätte meine Experimentgruppe über das Programm verfügt, welches ich geschrieben habe, hätte die Entschlüsselung nur diese 94 Mikrosekunden in Anspruch genommen. Auch später wurde ein Werkzeug, die Bombe-Maschine, gebaut, um die Verschlüsselung der Enigma zu knacken.
+                    Die zur Verfügung stehenden Werkzeuge sind relevant, da diese die Arbeit massiv beschleunigen können. Hätte unsere Experimentgruppe über das Programm verfügt, welches wir geschrieben haben, hätte die Entschlüsselung nur diese 94 Mikrosekunden in Anspruch genommen. Auch später wurde ein Werkzeug, die Bombe-Maschine, gebaut, um die Verschlüsselung der Enigma zu knacken.
                     <br> <br>
                     Die möglichen Schlüssel, auch keyspace genannt, sind relevant, da diese bestimmen, wie schnell ein Angreifer alle möglichen Kombinationen ausprobieren kann. Die Cäsar-Verschlüsselung bietet nur 25 mögliche Schlüssel, eine triviale Zahl für moderne Computer. Enigma hingegen bot 3·10<sup>114</sup> mögliche Schlüssel. (Durch menschliche Fehler aber eher 1.58·10<sup>19</sup>) [14]. Moderne Verschlüsselungen wie RSA hingegen bieten Keyspaces bis zu 2<sup>4070.5</sup>. [15] Keyspace entspricht nicht direkt der Sicherheit, Sicherheit erfordert einen sicheren Algorithmus, ist allerdings dennoch ein grosser Bestandteil davon.
                     <br> <br>
@@ -341,7 +228,12 @@ All keys bruteforced in 94.300 µs
                     </a>
 
                     <a href="maria-stuart.html" class="btn">
-                        Maria-Stuart &rarr;
+                        Maria Stuart &rarr;
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <a href="anhang.html" class="btn btn-secondary">
+                        Anhang B: Cäsar-Verschlüsselung in Python
                     </a>
                 </div>
             </div>
@@ -364,5 +256,6 @@ All keys bruteforced in 94.300 µs
 
     <script src="caesar.js"></script>
     <script src="highlight.js"></script>
+    <script src="lightbox.js"></script>
 </body>
 </html>
